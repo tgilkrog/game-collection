@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('game_copies', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->foreignId('game_base_id')->constrained()->cascadeOnDelete();
+            $table->string('region')->nullable();
+            $table->string('completeness')->nullable();
+            $table->decimal('purchase_price', 8, 2)->nullable();
+            $table->date('purchase_date')->nullable();
+            $table->text('notes')->nullable();
+            $table->foreignId('case_condition_id')->nullable()->constrained('conditions');
+            $table->foreignId('disc_condition_id')->nullable()->constrained('conditions');
+            $table->foreignId('manual_condition_id')->nullable()->constrained('conditions');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('game_copies');
+    }
+};

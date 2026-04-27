@@ -1,0 +1,338 @@
+@import 'tailwindcss';
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@import './components/variables.css';
+@import './components/navbar.css';
+@import './components/forms.css';
+@import './components/topBar.css';
+
+@import './pages/home.css';
+@import './pages/show-game.css';
+@import './pages/genres.css';
+@import './pages/platforms.css';
+
+@font-face {
+  font-family: myFont; /* set name */
+  src: url(/resources/BlenderProBook.woff2); /* url of the font */
+}
+
+html, body {
+    font-family: myFont;
+    height: 100vh;
+    width: 100vw;
+    margin: 0px;
+    padding: 0px;
+    background: radial-gradient(
+      circle at 20% 60%,
+      rgba(124, 58, 237, 0.15),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(59, 130, 246, 0.12),
+      transparent 40%
+    ),
+    #0b0b12;
+
+    color: var(--primary-text);
+    letter-spacing: 1px;
+    
+    .title {
+        font-size: 30px;
+    }
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: var(--highlight-color);
+    border: 1px solid var(--highlight-color);
+    transition: all ease-in-out .3s;
+    text-transform: uppercase;
+}
+
+.button:hover {
+    cursor: pointer;
+    font-weight: bold;
+    background-color: var(--highlight-color);
+    color: var(--background-color);
+}
+
+.icon-button {
+    transition: all ease-in-out .3s;
+    color: var(--highlight-color);
+    border: 1px solid var(--highlight-color);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.icon-button:hover {
+    background-color: var(--highlight-color);
+    color: var(--background-color);
+}
+
+.content {
+    position: relative;
+    padding: 50px 100px 100px 50px;
+
+    .logout-form {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+    }
+
+    h1 {
+        font-size: 40px;
+        margin-bottom: 25px;
+    }
+}
+
+.genre-filter {
+    margin-bottom: 25px;
+    
+    .checkbox-button {
+        display: inline-block;
+        padding: 8px 14px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 4px;
+        transition: all 0.2s ease;
+        border: 1px solid var(--highlight-color);
+        color: var(--highlight-color);
+        font-weight: bold;
+    }
+
+    /* Hover effect */
+    .checkbox-button:hover {
+        background: var(--card3-color);
+    }
+
+    /* Checked state */
+    input[type="checkbox"]:checked + .checkbox-button {
+        background: var(--highlight-color);
+        color: var(--background-color);
+    }
+}
+
+.search-select {
+    position: relative;
+}
+
+.search-results1 {
+    position: absolute;
+    top: 45px;
+    max-height: 200px;
+    width: 100%;
+    overflow-y: auto;
+    background: rgb(11, 11, 18);
+    border-radius: 10px;
+}
+
+.result-item {
+    padding: 20px;
+    cursor: pointer;
+}
+
+.result-item img {
+    opacity: 0.8;
+    transition: all ease 0.2s;
+}
+
+.result-item:hover img{
+    opacity: 1;
+}
+
+
+/* PANEL CONTAINER */
+.panel {
+    width: 260px;
+    padding: 18px;
+    border-radius: 0px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    position: relative;
+    overflow: hidden;
+
+    background: rgba(10, 10, 30, 0.6);
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 0, 255, 0.2);
+    box-shadow:
+        0 0 10px rgba(255, 0, 255, 0.15),
+        inset 0 0 20px rgba(0, 200, 255, 0.05);
+}
+
+/* NEON CORNER LINES */
+.panel::before,
+.panel::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #ff00ff;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* move INSIDE instead of outside */
+.panel::before {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+}
+
+.panel::after {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+}
+
+/* HEADER */
+.panel-header {
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  color: #7df9ff;
+  text-transform: uppercase;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ROWS */
+.panel-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 14px;
+  font-size: 14px;
+
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.panel-row:last-child {
+  border-bottom: none;
+}
+
+/* VALUE STYLE */
+.value {
+  color: #ff4df0;
+  text-shadow: 0 0 8px rgba(255, 0, 255, 0.6);
+}
+
+/* TOTAL ROW (highlighted) */
+.panel-row.total {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 8px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 255, 0.1),
+    rgba(0, 200, 255, 0.1)
+  );
+
+  padding: 10px;
+  border-radius: 6px;
+
+  box-shadow: inset 0 0 10px rgba(255, 0, 255, 0.2);
+}
+
+/* SCAN LINE (separate layer) */
+.panel .scan {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0, 255, 255, 0.15),
+    transparent
+  );
+  opacity: 0;
+  animation: scan 5s linear infinite;
+  pointer-events: none;
+  border-radius: 12px; /* match panel */
+  overflow: hidden; /* clip scan ONLY */
+}
+
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    opacity: 0.6;
+  }
+  20%, 24%, 55% {
+    opacity: 0.2;
+  }
+}
+
+/* SCAN SWEEP */
+@keyframes scan {
+  0% {
+    transform: translateX(-100%) skewX(-20deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(200%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+
+
+
+
+.collection-overview {
+    background: rgba(10, 10, 30, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 0, 0.2);
+    box-shadow:
+        0 0 10px rgba(255, 2555, 0, 0.15),
+        inset 0 0 20px rgba(0, 200, 255, 0.05);
+}
+
+.collection-overview::before,
+.collection-overview::after {
+content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 2px solid yellow;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.collection-overview::before {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+}
+
+.collection-overview::after {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+}

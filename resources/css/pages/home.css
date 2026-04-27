@@ -1,0 +1,85 @@
+/* Background layer */
+.hero {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  inset: 0;
+
+  background-image: 
+    linear-gradient(to right, 
+      rgba(0,0,0,.9) 0%,     
+      rgba(0,0,0,.9) 10%,    
+      rgba(0,0,0,0) 80%
+    ),
+    linear-gradient(to top, 
+      rgba(0,0,0,1) 0%, 
+      rgba(0,0,0,0) 50%
+    ),
+    url("/public/images/hero.png");
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  z-index: 0;
+}
+
+
+
+.game-list-wrapper {
+    h2 {
+        font-size: 30px;
+        color: var(--highlight-color);
+    }
+}
+
+.collection-overview .card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease;
+
+    img {
+        height: 100%;
+        width: 100%;
+        opacity: 0.6;
+        transition: all 0.2s ease;
+        min-height: 210px;
+    }
+
+    .missing_copy {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        padding: 2.5px 5px;
+
+        i {
+            color: var(--highlight-color);
+        }
+    }
+
+    p {
+        color: var(--secondary-text);
+    }
+
+    .name {
+        color: var(--primary-text);
+        font-size: 20px;
+    }
+}
+
+.collection-overview .card a > div {
+    display: none;
+    padding: 10px;
+    height: 100%;
+}
+
+.collection-overview .gameBase:hover {
+    cursor: pointer;
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.45);
+
+    img {
+        opacity: 1;
+    }
+}
